@@ -1,0 +1,61 @@
+enum HvacFluid {STEAM, WATERSOLUTION, AIR}
+
+class Requirements{                 
+    minTemp: double;                
+    maxTemp: double;                
+    minVolFlow: double;             
+    maxVolFlow: double;             
+    fluid: HvacFluid;
+}
+
+abstract node class Provider{
+    name:string;       
+    requirements : Requirements;
+    cop: double;                    
+}
+
+abstract node class Server{
+    name:string;          
+    requirements: Requirements;
+} 
+
+abstract node class Client{
+    name:string; 
+    totalEnergyNeed: double;        
+    peakEnergyNeed: double;         
+}
+
+node class Zone extends Client{
+    area: double;
+    volume: double;
+    densityPeople: double;           
+    providerArea: double;            
+}
+
+node class ZoneGroup extends Client{
+}
+
+edge class provides
+    connect Provider[+] --> Server[+]
+{
+}
+
+edge class serves
+    connect Server[+] --> Client[+]
+{
+}
+
+edge class contains
+    connect ZoneGroup[0:1] --> Zone[+]
+{
+}
+
+edge class adjacent
+    connect Zone[*] -- Zone[*]
+{
+}
+
+edge class hosts
+    connect Zone[0:1] --> Provider[+]
+{
+}

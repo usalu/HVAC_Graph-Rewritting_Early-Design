@@ -1,0 +1,25 @@
+#using "model.gm"
+#using "servers.gm"
+
+rule BoilerPlacement{
+    z:Zone;
+    negative{
+        z -:hosts-> :Boiler;
+    }
+    if{z.providerArea>2;}
+    modify{
+        z-:hosts->:Boiler;
+    }
+}
+
+rule RadiatorPlacement{
+    z:Zone;
+    b:Boiler;
+    negative{
+        :Radiator -:serves-> z;
+    }
+    modify{
+        r:Radiator -:serves-> z;
+        b -:provides-> r;
+    }
+}

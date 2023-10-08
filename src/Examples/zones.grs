@@ -1,0 +1,45 @@
+new graph hvacRules "SchuppenGraph"
+
+new :Zone( name = "HVACRoom", providerArea= 10)
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Left_Floor_1_38fce418")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Left_Floor_2_01def439")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Left_Floor_3_1f7ddf80")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Left_Floor_4_de06524b")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Right_Floor_1_7da0fc34")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Right_Floor_2_4090f223")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Right_Floor_3_ea9edb99")
+new :Zone( name = "OfficeBuilding1_Arm_Lower_Right_Floor_4_0b07a85f")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Left_Floor_1_93495656")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Left_Floor_2_472ff17f")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Left_Floor_3_8d719eb2")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Left_Floor_4_bc30d852")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Right_Floor_1_2f5608f0")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Right_Floor_2_9aa42a56")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Right_Floor_3_6b1974dc")
+new :Zone( name = "OfficeBuilding1_Arm_Upper_Right_Floor_4_3c31bbad")
+new :Zone( name = "OfficeBuilding1_Center_Left_Floor_1_80061b12")
+new :Zone( name = "OfficeBuilding1_Center_Left_Floor_2_6d400162")
+new :Zone( name = "OfficeBuilding1_Center_Left_Floor_3_d88e6153")
+new :Zone( name = "OfficeBuilding1_Center_Left_Floor_4_82fd5061")
+new :Zone( name = "OfficeBuilding1_Center_Lower_Floor_1_cbc223e5")
+new :Zone( name = "OfficeBuilding1_Center_Lower_Floor_2_62cc9f65")
+new :Zone( name = "OfficeBuilding1_Center_Lower_Floor_3_12ada1e4")
+new :Zone( name = "OfficeBuilding1_Center_Lower_Floor_4_9416e6bb")
+new :Zone( name = "OfficeBuilding1_Center_Right_Floor_1_b3fd8739")
+new :Zone( name = "OfficeBuilding1_Center_Right_Floor_2_c5340818")
+new :Zone( name = "OfficeBuilding1_Center_Right_Floor_3_cbe4e04b")
+new :Zone( name = "OfficeBuilding1_Center_Right_Floor_4_38fba3a2")
+new :Zone( name = "OfficeBuilding1_Center_Upper_Floor_1_34900490")
+new :Zone( name = "OfficeBuilding1_Center_Upper_Floor_2_e7efc055")
+new :Zone( name = "OfficeBuilding1_Center_Upper_Floor_3_67329303")
+new :Zone( name = "OfficeBuilding1_Center_Upper_Floor_4_755dab8f")
+new :Zone( name = "OfficeBuilding1_Core_Floor_1_67be9211")
+new :Zone( name = "OfficeBuilding1_Core_Floor_2_8afa4821")
+new :Zone( name = "OfficeBuilding1_Core_Floor_3_e4789845")
+new :Zone( name = "OfficeBuilding1_Core_Floor_4_30577553")
+
+show graph dot
+
+exec BoilerPlacement && RadiatorPlacement*
+
+show graph dot

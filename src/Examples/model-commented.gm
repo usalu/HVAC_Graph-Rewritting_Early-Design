@@ -1,0 +1,53 @@
+enum HvacFluidType {WATERSOLUTION, STEAM, AIR}
+
+class Requirements{                 #Fluid interface requirements
+    minTemp: double;                #[°C]
+    maxTemp: double;                #[°C]
+    minVolFlow: double;             #[m³/s]
+    maxVolFlow: double;             #[m³/s]
+    fluid: HvacFluidType;
+}
+
+abstract node class Provider{       #Energy Provider (Primary HVAC System)
+    requirements : Requirements;
+    cop: double;                    #Coefficient of performance
+}
+
+abstract node class Server{         #Energy Server (Secondary HVAC System)
+    requirements: Requirements;
+} 
+
+abstract node class Client{
+    anualEnergyNeed: double;        #Anual energy needed [kWh/a]
+    peakEnergyNeed: double;         #Peak energy need [W]
+}
+
+node class Zone extends Client{
+    area: double;
+    volume: double;
+    occupancyDensity: double           #[#People/m²]
+    areaForProvider: double            #Amount of area for providers [m²]
+};
+
+node class ZoneGroup extends Client{
+}
+
+edge class provides{
+    connect Provider[+] --> Server[+];
+}
+
+edge class serves{
+    connect Server[+] --> Client[+];
+}
+
+edge class contains{
+    connect ZoneGroup[0:1]--> Zone[+]
+}
+
+edge adjacent{
+    connect Zone[*]-- Zone[*]
+}
+
+edge hosts{
+    connect Zone[0:1]--> Provider[+]
+}

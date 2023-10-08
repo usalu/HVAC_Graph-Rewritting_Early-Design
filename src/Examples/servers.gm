@@ -1,0 +1,9 @@
+enum BoilerFuelType {ELECTRICITY, NATURALGAS, PROPANE, FUELOIL, COAL, DIESEL, GASOLINE}
+node class Boiler extends Provider;
+
+node class Heatpump extends Provider;
+
+node class Radiator extends Server;
+
+
+
